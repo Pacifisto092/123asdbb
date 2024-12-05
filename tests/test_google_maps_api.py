@@ -22,6 +22,15 @@ class TestCreatePlace():
         Cheking.check_json_token(result_get, ['location', 'accuracy', 'name', 'phone_number', 'address', 'types', 'website', 'language'])
         Cheking.check_json_value(result_get, 'address', '29, side layout, cohen 09')
 
+    def test_update_new_place(self):
+
+        print("Метод POST")
+        result_post = Google_maps_api.create_new_place()
+        place_id = result_post.json()['place_id']
+        Cheking.check_status_code(result_post, 200)
+        Cheking.check_json_token(result_post, ['status', 'place_id', 'scope', 'reference', 'id'])
+        Cheking.check_json_value(result_post, 'status', 'OK')
+
         print("Метод PUT")
         result_put = Google_maps_api.put_new_place(place_id)
         Cheking.check_status_code(result_put, 200)
@@ -33,6 +42,15 @@ class TestCreatePlace():
         Cheking.check_status_code(result_get, 200)
         Cheking.check_json_token(result_get, ['location', 'accuracy', 'name', 'phone_number', 'address', 'types', 'website', 'language'])
         Cheking.check_json_value(result_get, 'address', '100 Lenina street, RU')
+
+    def test_delete_new_place(self):
+
+        print("Метод POST")
+        result_post = Google_maps_api.create_new_place()
+        place_id = result_post.json()['place_id']
+        Cheking.check_status_code(result_post, 200)
+        Cheking.check_json_token(result_post, ['status', 'place_id', 'scope', 'reference', 'id'])
+        Cheking.check_json_value(result_post, 'status', 'OK')
 
         print("Метод DELETE")
         result_delete = Google_maps_api.delete_new_place(place_id)
@@ -47,7 +65,7 @@ class TestCreatePlace():
         Cheking.check_json_value(result_get, 'msg', "Get operation failed, looks like place_id  doesn't exists")  #Проверка всего текста
         Cheking.check_json_search_word_in_value(result_get,'msg','failed')                                          # Проверка слова или части текста
 
-        print("Тестирование создания, изменения и удаления локации прошло успешно")
+print("Тестирование позитивных сценариев создания, изменения и удаления локации прошло успешно")
 
 
 
