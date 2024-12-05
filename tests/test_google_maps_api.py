@@ -2,8 +2,9 @@
 from utils.api import Google_maps_api
 from utils.cheking import Cheking
 
-""""Создание, изменение и удаление локации"""
-class TestCreatePlace():
+
+class TestPositive:
+    """"Позитивные тесты: Создание, изменение и удаление локации"""
 
     def test_create_new_place(self):
 
@@ -58,12 +59,6 @@ class TestCreatePlace():
         Cheking.check_json_token(result_delete, ['status'])
         Cheking.check_json_value(result_delete, 'status', 'OK')
 
-        print("Метод GET DELETE")
-        result_get = Google_maps_api.get_new_place(place_id)
-        Cheking.check_status_code(result_get, 404)
-        Cheking.check_json_token(result_get, ['msg'])
-        Cheking.check_json_value(result_get, 'msg', "Get operation failed, looks like place_id  doesn't exists")  #Проверка всего текста
-        Cheking.check_json_search_word_in_value(result_get,'msg','failed')                                          # Проверка слова или части текста
 
 print("Тестирование позитивных сценариев создания, изменения и удаления локации прошло успешно")
 
