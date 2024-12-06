@@ -1,5 +1,6 @@
-
+import json
 from utils.http_metod import Http_methods
+from utils.json import *
 
 """Методы для тестирования Google_maps_api"""
 
@@ -15,22 +16,6 @@ class Google_maps_api():
     @staticmethod
     def create_new_place():
         """Метод для созданияя новой локации"""
-
-        json_for_create_new_place = {
-                "location": {
-                    "lat": -38.383494,
-                    "lng": 33.427362
-                }, "accuracy": 50,
-                "name": "Frontline house",
-                "phone_number": "(+91) 983 893 3937",
-                "address": "29, side layout, cohen 09",
-                "types": [
-                    "shoe park",
-                    "shop"
-                ],
-                "website": "http://google.com",
-                "language": "French-IN"
-        }
 
         post_url = base_url + post_resource + key
         print(post_url)
@@ -54,13 +39,9 @@ class Google_maps_api():
     def put_new_place(place_id):
         """Метод для изменения локации"""
 
-        json_for_update_place = {
-            "place_id": place_id,
-            "address": "100 Lenina street, RU",
-            "key": "qaclick123"
-        }
         put_url = base_url + put_resourse + key
         print(put_url)
+        json_for_update_place["place_id"] = place_id
         result_put = Http_methods.put(put_url, json_for_update_place)
         print(result_put.text)
         return result_put
@@ -70,12 +51,9 @@ class Google_maps_api():
     def delete_new_place(place_id):
         """Метод удаления локации"""
 
-        json_for_delete_place = {
-            "place_id": place_id
-        }
-
         delete_url = base_url + delete_resourecese + key
         print(delete_url)
+        json_for_delete_place["place_id"] = place_id
         result_delete = Http_methods.delete(delete_url, json_for_delete_place)
         print(result_delete.text)
         return result_delete
