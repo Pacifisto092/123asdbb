@@ -7,11 +7,12 @@ class Cheking:
     """Метод для проверки статус кода"""
     @staticmethod
     def check_status_code(response, status_code):
-        assert response.status_code == status_code
         if response.status_code == status_code:
             print("Успешно! Статус код ={}".format(response.status_code))
         else:
             print("Провал! Статус код ={}".format(response.status_code))
+        assert response.status_code == status_code
+
 
 
     """Метод для проверки обязательных полей в ответе запроса"""
@@ -40,4 +41,5 @@ class Cheking:
             print("Слово {} присутствует".format(search_word))
         else:
             print("Слово {} отсутствует".format(search_word))
+        assert search_word in check_info
 
