@@ -5,4 +5,4 @@ import pytest
 def fixt():
     print("Начало")
     yield
-    print("Конец")
+    print("Конец!")
