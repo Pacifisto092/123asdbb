@@ -1,7 +1,6 @@
-from utils.api import GoogleMapsApi
-from utils.cheking import Cheking
-from utils.json import *
-
+from Utils.api import GoogleMapsApi
+from Utils.cheking import Cheking
+from Utils.json import *
 
 class TestPositive:
     """"Позитивные тесты: Создание, изменение и удаление локации"""

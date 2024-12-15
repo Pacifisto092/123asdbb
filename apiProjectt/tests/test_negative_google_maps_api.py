@@ -1,5 +1,5 @@
-from utils.api import GoogleMapsApi
-from utils.cheking import Cheking
+from Utils.api import GoogleMapsApi
+from Utils.cheking import Cheking
 
 
 class TestNegative:
