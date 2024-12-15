@@ -1,5 +1,5 @@
-from utils.http_metod import HttpMethods
-from utils.json import *
+from http_metod import HttpMethods
+from Utils.json import *
 
 """Методы для тестирования Google_maps_api"""
 
